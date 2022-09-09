@@ -55,7 +55,7 @@ const PostCard = ({
 
         <PostContent className="post_content">
           <PostTitle className="post_title">
-            <Link href={url}>{title}</Link>
+            <Link href={`/${url}`}>{title}</Link>
           </PostTitle>
           {description && (
             <Excerpt

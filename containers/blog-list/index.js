@@ -3,39 +3,16 @@ import PostCardModern from '../../components/post-card-modern/post-card-modern';
 import Pagination from '../../components/pagination/pagination';
 import { BlogPostsWrapper, PostRow, PostGrid } from './style';
 import Layout from '../../components/layout';
-import axios from 'axios'
-import ApiCall from '../../utils/apicall';
-import { useParams } from 'react-router-dom';
 
-const BlogList = (props) => {
-  // const { data } = props;
-  // const Posts = data.allWpPost.edges;
-  // const { currentPage, numPages } = props.pageContext;\
+const BlogList = ({ serverData }) => {
 
-  const params = useParams();
-  const { id } = params;
-  const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(parseInt(id));
-  const [numPages, setNumPages] = useState();
-
-  const getPosts = async () => {
-    const res = await ApiCall({ url: `https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts?page=${currentPage}&per_page=2` });
-    if (res && res.status === 200) {
-      setPosts(res.data);
-      setNumPages(res.headers['x-wp-totalpages'])
-    }
-  }
-
-  useEffect(() => {
-    getPosts();
-  }, [currentPage])
-
+  const { currentPage, data, totalPage } = serverData;
 
   return (
     <Layout>
       <BlogPostsWrapper>
         <PostRow>
-          {(posts || []).map((item, index) => {
+          {(data || []).map((item, index) => {
             //get Blog image
             // const featuredImage = getImage(node.featuredImage?.node?.localFile);
             // Random Placeholder Color
@@ -75,8 +52,7 @@ const BlogList = (props) => {
         </PostRow>
         <Pagination
           currentPage={`${currentPage}`}
-          setCurrentPage={setCurrentPage}
-          totalPage={`${numPages}`}
+          totalPage={`${totalPage}`}
         />
       </BlogPostsWrapper>
     </Layout>

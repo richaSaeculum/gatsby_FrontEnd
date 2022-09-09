@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
 import Link from 'next/link';
 import {
@@ -10,39 +10,32 @@ import {
 
 const Pagination = ({
   currentPage,
-  setCurrentPage,
   totalPage,
   className,
   ...props
 }) => {
 
 
-  const onNextAndPrevClick = (type) => {
-    if (type === 'next') {
-      setCurrentPage(parseInt(currentPage) + 1)
-    } else {
-      setCurrentPage(parseInt(currentPage) - 1)
-    }
-  }
-
-  console.log(currentPage)
-
   return (
     <PaginationWrapper {...props} className={className}>
-      <PrevPage onClick={() => onNextAndPrevClick('prev')}>
+      <PrevPage>
         {currentPage != 1 && (
-          <Link href={`/page/${parseInt(currentPage) - 1}`} aria-label="Prev">
-            <IoMdArrowRoundBack />
+          <Link href={`/blogs/${parseInt(currentPage) - 1}`} passHref>
+            <a>
+              <IoMdArrowRoundBack />
+            </a>
           </Link>
         )}
       </PrevPage>
 
       <PageNumber>{`Page ${currentPage} Of ${totalPage}`}</PageNumber>
 
-      <NextPage onClick={() => { onNextAndPrevClick('next') }}>
+      <NextPage>
         {totalPage != currentPage && (
-          <Link href={`/page/${parseInt(currentPage) + 1}`} aria-label="Next">
-            <IoMdArrowRoundForward />
+          <Link href={`/blogs/${parseInt(currentPage) + 1}`}>
+            <a>
+              <IoMdArrowRoundForward />
+            </a>
           </Link>
         )}
       </NextPage>

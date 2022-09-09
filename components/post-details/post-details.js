@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useRef } from 'react';
 import _ from 'lodash';
 import {
   PostDetailsWrapper,
@@ -10,6 +10,7 @@ import {
   PostTags,
 } from './post-details.style';
 import Link from 'next/link';
+import renderHTML from 'react-render-html';
 import moment from 'moment'
 
 
@@ -99,7 +100,7 @@ const PostDetails = ({
         {tags == null ? null : (
           <PostTags>
             {tags.map((tag, index) => (
-              <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
+              <Link key={index} href={`/tags/${_.kebabCase(tag)}/`}>
                 {`#${tag}`}
               </Link>
             ))}

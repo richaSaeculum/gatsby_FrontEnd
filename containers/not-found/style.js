@@ -85,6 +85,12 @@ export const Icon = styled.div`
   font-size: 16px;
   margin-right: 15px;
   transition: 0.15s ease-in-out;
+  &:hover {
+     background-color: ${themeGet('colors.primary', '#D10068')};
+     svg {
+      color: ${themeGet('colors.textColor', '#292929')};
+     }
+  }
 `;
 
 export const Goback = styled.div`
@@ -95,16 +101,16 @@ export const Goback = styled.div`
   @media (max-width: 575px) {
     margin-top: 30px;
   }
-  a {
-    display: inline-flex;
-    align-items: center;
+  & > div {
+    display:flex;
+    align-items:center;
     font-size: 15px;
     font-weight: 500;
     color: ${themeGet('colors.textColor', '#292929')};
     transition: 0.15s ease-in-out;
     &:hover {
       color: ${themeGet('colors.primary', '#D10068')};
-      ${Icon} {
+     & ${Icon} {
         background-color: ${themeGet('colors.primary', '#D10068')};
       }
     }

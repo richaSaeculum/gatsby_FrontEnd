@@ -48,7 +48,7 @@ const Posts = ({ serverData }) => {
         })}
       </PostRow>
       <SeeMore>
-        <Link href="page/1" passHref>
+        <Link href="blogs/1" passHref>
           <Button title="See more" type="submit" />
         </Link>
       </SeeMore>

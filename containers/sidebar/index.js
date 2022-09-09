@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import FeaturePost from '../../components/feature-post/feature-post';
 // import PromotionImage from '../../images/ad.png';
@@ -12,22 +13,43 @@ import {
 } from './style';
 
 
-const Sidebar = () => {
+const Sidebar = ({ featuredPosts }) => {
   // const Posts = Data.allMarkdownRemark.edges;
-  // const Tags = Data.allMarkdownRemark.group;
+  const Tags = [
+    {
+      fieldValue: 'Bollywood',
+      totalCount: 12
+    },
+    {
+      fieldValue: 'Tollywood',
+      totalCount: 87
+    },
+    {
+      fieldValue: 'Instagram',
+      totalCount: 45
+    },
+    {
+      fieldValue: 'Crime',
+      totalCount: 23
+    },
+    {
+      fieldValue: 'Finance',
+      totalCount: 45
+    },
+  ];
 
-  const [posts, setPosts] = useState();
-  const getPosts = async () => {
-    fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts`)
-      .then(response => response.json())
-      .then(resultData => {
-        setPosts(resultData)
-      })
-  }
+  const [posts, setPosts] = useState(featuredPosts);
+  // const getPosts = async () => {
+  //   fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts`)
+  //     .then(response => response.json())
+  //     .then(resultData => {
+  //       setPosts(resultData)
+  //     })
+  // }
 
-  useEffect(() => {
-    getPosts();
-  }, [])
+  // useEffect(() => {
+  //   getPosts();
+  // }, [])
 
   return (
     <SidebarWrapper>
@@ -44,7 +66,7 @@ const Sidebar = () => {
 
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>
-        {(posts || []).map((item,index) => {
+        {(posts || []).map((item, index) => {
           const title = item.title.rendered || item.slug;
           // Random Placeholder Color
           const placeholderColors = [
@@ -81,17 +103,17 @@ const Sidebar = () => {
         })}
       </SidebarWidget>
 
-      {/* <SidebarWidget>
+      <SidebarWidget>
         <WidgetTitle>Tags</WidgetTitle>
         {Tags.map((tag) => (
           <TagItem key={tag.fieldValue}>
             <span>#</span>
             <Link href={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} <span>({tag.totalCount})</span>
+              <a>{tag.fieldValue} <span>({tag.totalCount})</span></a>
             </Link>
           </TagItem>
         ))}
-      </SidebarWidget> */}
+      </SidebarWidget>
 
       {/* <SidebarWidget>
         <WidgetTitle>Instagram</WidgetTitle>

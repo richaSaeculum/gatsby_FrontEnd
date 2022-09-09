@@ -19,13 +19,9 @@ const Menu = ({
     <MenuItemWrapper className={addAllClasses.join(' ')} {...props}>
       {items.map((item, index) => (
         <MenuItem key={index}>
-          {item.external ? (
-            <a href={item.url}>{item.label}</a>
-          ) : (
-            <Link href={item.url}>
-              {item.label}
-            </Link>
-          )}
+          <Link href={item.url}>
+            {item.label}
+          </Link>
         </MenuItem>
       ))}
     </MenuItemWrapper>

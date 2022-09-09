@@ -4,6 +4,7 @@ import Layout from '../../components/layout';
 import PostCard from '../../components/post-card/post-card';
 import PostDetails from '../../components/post-details/post-details';
 import Sidebar from '../sidebar';
+import { decode } from 'html-entities';
 // import {
 //   FacebookShareButton,
 //   TwitterShareButton,
@@ -28,9 +29,9 @@ import {
   BlogPostComment,
   BlogDetailsContent,
 } from './style';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
 
-const BlogPost = (props) => {
+const BlogPost = ({ serverData }) => {
   // const post = props.data.wpPost;
   // // const { edges } = props.data.allMarkdownRemark;
   // const title = post.title;
@@ -43,27 +44,26 @@ const BlogPost = (props) => {
   //   shortname: process.env.GATSBY_DISQUS_NAME,
   //   config: { identifier: slug, title },
   // };
-  const params = useParams();
-  const [post, setPost] = useState();
-
+  // const params = useParams();
+  const [post, setPost] = useState(serverData.data);
 
   // return (
   //   <h1>demo</h1>
   // )
   // https://example.com/wp-json/wp/v2/posts/<id>
 
-  useEffect(() => {
-    const { postid } = params;
-    getSinglePost(postid);
-  }, [])
+  // useEffect(() => {
+  //   // const { postid } = params;
+  //   getSinglePost();
+  // }, [])
 
-  function getSinglePost(id) {
-    fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts/${id}`)
-      .then(response => response.json())
-      .then(resultData => {
-        setPost(resultData)
-      })
-  }
+  // function getSinglePost(id = 553) {
+  //   fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts/${id}`)
+  //     .then(response => response.json())
+  //     .then(resultData => {
+  //       setPost(resultData)
+  //     })
+  // }
 
   return (
     <Layout>
@@ -73,7 +73,8 @@ const BlogPost = (props) => {
             title={post?.title?.rendered}
             date={post?.date}
             // preview={featuredImage}
-            description={post?.content.rendered}
+            description={decode(post?.content.rendered)}
+            // description={content}
           />
 
           {/* <BlogPostFooter>
@@ -109,13 +110,13 @@ const BlogPost = (props) => {
             </PostShare>
           </BlogPostFooter> */}
 
-         {/* <BlogPostComment>
+          {/* <BlogPostComment>
             <DiscussionEmbed {...disqusConfig} />
           </BlogPostComment> */}
 
         </BlogDetailsContent >
 
-        <Sidebar />
+        <Sidebar featuredPosts={serverData.featuredPosts} />
       </BlogPostDetailsWrapper >
       {/* 
       {edges.length !== 0 && (

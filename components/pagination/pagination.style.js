@@ -14,7 +14,7 @@ export const PrevPage = styled.div`
     height: 32px;
     color: ${themeGet('colors.textColor', '#292929')};
     border-radius: 50%;
-    background-color: #f3f3f3;
+    background-color: #efefef;
     font-size: 18px;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@ export const NextPage = styled.div`
     height: 32px;
     color: ${themeGet('colors.textColor', '#292929')};
     border-radius: 50%;
-    background-color: #f3f3f3;
+    background-color: #efefef;
     font-size: 18px;
     display: flex;
     align-items: center;

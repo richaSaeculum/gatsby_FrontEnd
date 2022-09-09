@@ -30,7 +30,7 @@ const FeaturedPost = ({
     <FeaturedPostWrapper className={addAllClasses.join(' ')} {...props}>
       {image == null ? null : (
         <PostPreview className="post_preview">
-          <Link href={url}>
+          <Link href={`/${url}`}>
             {/* <GatsbyImage src={image} alt="post preview" backgroundColor={placeholderBG} /> */}
           </Link>
         </PostPreview>
@@ -38,7 +38,7 @@ const FeaturedPost = ({
 
       <PostDetails>
         <PostTitle className="post_title">
-          <Link href={url}>{title}</Link>
+          <Link href={`/${url.toString()}`}>{title}</Link>
         </PostTitle>
         {/* <PostMeta>
           {tags == null ? null : (

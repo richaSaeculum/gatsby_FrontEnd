@@ -35,7 +35,7 @@ const PostCardModern = ({
     <PostCardModernWrapper className={addAllClasses.join(' ')} {...props}>
       {image == null ? null : (
         <PostPreview className="post_preview">
-          <Link href={url}>
+          <Link href={`/${url.toString()}`}>
             <a></a>
             {/* <GatsbyImage src={image} alt="post preview" backgroundColor={placeholderBG} /> */}
           </Link>
@@ -51,17 +51,17 @@ const PostCardModern = ({
       )}
 
       <PostDetails className="post_details">
-        {/* {tags == null ? null : (
+        {tags == null ? null : (
           <PostTags className="post_tags">
-            {tags.map((tag: string, index: number) => (
-              <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
+            {tags.map((tag, index) => (
+              <Link key={index} href={`/tags/${_.kebabCase(tag)}/`}>
                 {`#${tag}`}
               </Link>
             ))}
           </PostTags>
-        )} */}
+        )}
         <PostTitle className="post_title">
-          <Link href={`${url}`}>{title}</Link>
+          <Link href={`/${url.toString()}`}>{title}</Link>
         </PostTitle>
         {description && (
           <Excerpt

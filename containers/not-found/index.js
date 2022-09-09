@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   NotFoundWrapper,
@@ -8,31 +9,47 @@ import {
   Goback,
   Icon,
 } from './style';
-
+import ResetCSS from '../../components/reset-css';
+import Navbar from '../../components/navbar/navbar';
+import Footer from '../../components/footer/footer';
+import NotFoundImg from '../../public/images/404.png';
 
 const NotFound = () => {
 
   return (
-    <NotFoundWrapper>
-      <NotFoundContent>
-        <h1>This Page Was Lost</h1>
-        <p>
-          The Page You are looking for isnot available. Try to search again or
-          use the Go Back button below.
-        </p>
-        <Goback>
-          <Link href="/">
-            <Icon>
-              <IoMdArrowRoundBack />
-            </Icon>
-            Go Back
-          </Link>
-        </Goback>
-      </NotFoundContent>
-      <NotFoundImage>
-        {/* <GatsbyImage src={Data.avatar.childImageSharp.gatsbyImageData} alt="author" /> */}
-      </NotFoundImage>
-    </NotFoundWrapper>
+    <>
+      <ResetCSS />
+      <Navbar />
+      <NotFoundWrapper>
+        <NotFoundContent>
+          <h1>This Page Was Lost</h1>
+          <p>
+            The Page You are looking for isnot available. Try to search again or
+            use the Go Back button below.
+          </p>
+          <Goback>
+            <Link href="/">
+              <div>
+                <Icon>
+                  <IoMdArrowRoundBack />
+                </Icon>
+                Go Back
+              </div>
+            </Link>
+            {/* <Link href="/">
+              Go Back
+            </Link> */}
+          </Goback>
+        </NotFoundContent>
+        {/* <NotFoundImage>
+          <GatsbyImage src={Data.avatar.childImageSharp.gatsbyImageData} alt="author" /> 
+        </NotFoundImage> */}
+      </NotFoundWrapper>
+      <Footer>
+        Copyright &copy; {new Date().getFullYear()}
+        <a href="https://redq.io/"> RedQ, Inc.</a>
+      </Footer>
+    </>
   );
 };
 
