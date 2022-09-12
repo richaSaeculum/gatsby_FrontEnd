@@ -44,33 +44,16 @@ const BlogPost = ({ serverData }) => {
   //   shortname: process.env.GATSBY_DISQUS_NAME,
   //   config: { identifier: slug, title },
   // };
-  // const params = useParams();
-  // const [post, setPost] = useState(serverData.post);
+  
 
-  // return (
-  //   <h1>demo</h1>
-  // )
-  // https://example.com/wp-json/wp/v2/posts/<id>
 
-  // useEffect(() => {
-  //   // const { postid } = params;
-  //   getSinglePost();
-  // }, [])
-
-  // function getSinglePost(id = 553) {
-  //   fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts/${id}`)
-  //     .then(response => response.json())
-  //     .then(resultData => {
-  //       setPost(resultData)
-  //     })
-  // }
 
   return (
     <Layout>
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
           <PostDetails
-            title={post?.title?.rendered}
+            title={decode(post?.title?.rendered)}
             date={post?.date}
             // preview={featuredImage}
             description={decode(post?.content.rendered)}
