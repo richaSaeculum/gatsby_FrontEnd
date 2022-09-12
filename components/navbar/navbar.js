@@ -7,6 +7,7 @@ import MobileMenu from './mobile-menu';
 import HeaderWrapper, {
   NavbarWrapper,
   Logo,
+  LogoText,
   MenuWrapper,
   NavSearchButton,
   NavSearchWrapper,
@@ -68,7 +69,8 @@ const Navbar = ({
         </DrawerProvider>
         <Logo>
           <Link href="/">
-              <img src={'/images/logo.png'} alt="logo" />
+            {/* <img src={'/images/logo.png'} alt="logo" /> */}
+            <LogoText>The Common Logic</LogoText>
           </Link>
         </Logo>
         <MenuWrapper>

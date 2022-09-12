@@ -8,6 +8,7 @@ const BlogListPage = (props) => {
 
 export default BlogListPage;
 
+
 export async function getServerSideProps(context) {
   let { page } = context.params;
   const { headers, data } = await axios.get(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts?page=${page}&per_page=2`);

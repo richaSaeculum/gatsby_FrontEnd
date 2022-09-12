@@ -21,10 +21,10 @@ const Layout = ({ children }) => {
 
         {children}
 
-        <Newsletter />
+        {/* <Newsletter /> */}
         <Footer>
           Copyright &copy; {new Date().getFullYear()}
-          <a href="https://redq.io/"> RedQ, Inc.</a>
+          <a href="/"> XYZ Comp</a>
         </Footer>
         <ScrollToTop
           showUnder={300}

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Formik, FormikProps, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button';
+import Layout from '../../components/layout';
 import {
   ContactWrapper,
   ContactPageTitle,
   ContactFromWrapper,
   InputGroup,
 } from './style';
-import Layout from '../../components/layout';
 
 const SignupSchema = Yup.object().shape({
   firstName: Yup.string().required('Required'),
@@ -44,7 +44,7 @@ const Contact = () => {
                 <ContactPageTitle>
                   <h2>Contact</h2>
                   <p>
-                    StoryHub theme comes with a contact form built-in. You can use
+                    The Common Logic theme comes with a contact form built-in. You can use
                     this form with Gatsbay Js service and get up to 50 submissions
                     for free per form per month. Also, you can easily switch to
                     another service if you want.

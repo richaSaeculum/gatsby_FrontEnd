@@ -1,8 +1,9 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
+import { decode } from 'html-entities';
 import PostCardModern from '../../components/post-card-modern/post-card-modern';
 import Pagination from '../../components/pagination/pagination';
-import { BlogPostsWrapper, PostRow, PostGrid } from './style';
 import Layout from '../../components/layout';
+import { BlogPostsWrapper, PostRow, PostGrid } from './style';
 
 const BlogList = ({ serverData }) => {
 
@@ -37,7 +38,7 @@ const BlogList = ({ serverData }) => {
                 <PostGrid>
                   <PostCardModern
                     key={item.slug}
-                    title={item.title.rendered || item.slug}
+                    title={decode(item.title.rendered) || item.slug}
                     // image={featuredImage}
                     url={item.id}
                     description={item.excerpt.rendered}

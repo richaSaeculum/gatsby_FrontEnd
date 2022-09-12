@@ -43,6 +43,21 @@ export const Logo = styled.div`
 	}
 `;
 
+export const LogoText = styled.h1`
+	@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&display=swap');
+	font-size: 22px;
+	text-transform: capitalize;
+	margin-bottom: 0;
+	color: ${themeGet('colors.primary', '#D10068')};
+`
+
+export const LogoTextMobile = styled.h1`
+	font-size: 16px;
+	text-transform: capitalize;
+	margin-bottom: 0;
+	color: ${themeGet('colors.primary', '#D10068')};
+`
+
 export const MenuWrapper = styled.div`
 	display: flex;
 	flex-grow: 1;
@@ -246,7 +261,8 @@ export const DrawerHead = styled.div`
 `;
 
 export const DrawerLogo = styled.div`
-	max-width: 110px;
+	// max-width: 110px;
+	flex: 1;
 	padding-left: 30px;
 	img {
 		max-width: 100%;

@@ -3,12 +3,13 @@ import { themeGet } from '@styled-system/theme-get';
 
 const FooterWrapper = styled.footer`
   position: relative;
+  margin-top: 20px; 
   overflow: hidden;
   color: ${themeGet('colors.textColor', '#292929')};
   font-size: ${themeGet('fontSizes.3', '15')}px;
   padding: 30px 15px;
   text-align: center;
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid #dbdbdb90;
   @media (max-width: 575px) {
     padding: 22px 15px;
   }

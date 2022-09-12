@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IoMdArrowRoundBack } from 'react-icons/io';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   NotFoundWrapper,
@@ -12,7 +11,6 @@ import {
 import ResetCSS from '../../components/reset-css';
 import Navbar from '../../components/navbar/navbar';
 import Footer from '../../components/footer/footer';
-import NotFoundImg from '../../public/images/404.png';
 
 const NotFound = () => {
 

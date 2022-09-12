@@ -5,6 +5,7 @@ import Menu from './menu';
 import {
   MobileMenuWrapper,
   DrawerContentWrapper,
+  LogoTextMobile,
   DrawerHead,
   DrawerLogo,
   DrawerClose,
@@ -45,7 +46,8 @@ const MobileMenu = ({
           <DrawerHead>
             <DrawerLogo>
               <Link href="/">
-                <img src={'/images/logo.png'} alt="logo" />
+                {/* <img src={'/images/logo.png'} alt="logo" /> */}
+                <LogoTextMobile className='mobile-logo'>The Common Logic</LogoTextMobile>
               </Link>
             </DrawerLogo>
             <DrawerClose onClick={toggleDrawer}>

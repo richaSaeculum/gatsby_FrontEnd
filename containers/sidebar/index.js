@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { decode } from 'html-entities';
 import FeaturePost from '../../components/feature-post/feature-post';
 // import PromotionImage from '../../images/ad.png';
 import {
@@ -38,36 +39,22 @@ const Sidebar = ({ featuredPosts }) => {
     },
   ];
 
-  const [posts, setPosts] = useState(featuredPosts);
-  // const getPosts = async () => {
-  //   fetch(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts`)
-  //     .then(response => response.json())
-  //     .then(resultData => {
-  //       setPosts(resultData)
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   getPosts();
-  // }, [])
-
   return (
     <SidebarWrapper>
-      <SidebarWidget>
+      {/* <SidebarWidget>
         <WidgetTitle>Promotion</WidgetTitle>
         <a
           href="https://1.envato.market/r1jdv"
-          aria-label="Get StoryHub"
           target="_blank"
         >
-          <img src={'/images/ad.png'} alt="Get StoryHub" />
+          <img src={'/images/ad.png'} alt="Get fff" />
         </a>
-      </SidebarWidget>
+      </SidebarWidget> */}
 
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>
-        {(posts || []).map((item, index) => {
-          const title = item.title.rendered || item.slug;
+        {(featuredPosts || []).map((item, index) => {
+          const title = decode(item.title.rendered) || item.slug;
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',

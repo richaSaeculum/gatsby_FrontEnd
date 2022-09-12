@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import _ from 'lodash';
-import Layout from '../../components/layout';
-import PostCard from '../../components/post-card/post-card';
-import PostDetails from '../../components/post-details/post-details';
-import Sidebar from '../sidebar';
 import { decode } from 'html-entities';
+import _ from 'lodash';
+import Sidebar from '../sidebar';
+import Layout from '../../components/layout';
+import PostDetails from '../../components/post-details/post-details';
+// import PostCard from '../../components/post-card/post-card';
 // import {
 //   FacebookShareButton,
 //   TwitterShareButton,
@@ -29,9 +29,9 @@ import {
   BlogPostComment,
   BlogDetailsContent,
 } from './style';
-import Link from 'next/link';
 
 const BlogPost = ({ serverData }) => {
+  const { post, featuredPosts } = serverData;
   // const post = props.data.wpPost;
   // // const { edges } = props.data.allMarkdownRemark;
   // const title = post.title;
@@ -45,7 +45,7 @@ const BlogPost = ({ serverData }) => {
   //   config: { identifier: slug, title },
   // };
   // const params = useParams();
-  const [post, setPost] = useState(serverData.data);
+  // const [post, setPost] = useState(serverData.post);
 
   // return (
   //   <h1>demo</h1>
@@ -74,7 +74,7 @@ const BlogPost = ({ serverData }) => {
             date={post?.date}
             // preview={featuredImage}
             description={decode(post?.content.rendered)}
-            // description={content}
+          // description={content}
           />
 
           {/* <BlogPostFooter>
@@ -116,7 +116,7 @@ const BlogPost = ({ serverData }) => {
 
         </BlogDetailsContent >
 
-        <Sidebar featuredPosts={serverData.featuredPosts} />
+        <Sidebar featuredPosts={featuredPosts} />
       </BlogPostDetailsWrapper >
       {/* 
       {edges.length !== 0 && (

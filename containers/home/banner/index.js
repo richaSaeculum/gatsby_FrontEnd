@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useStaticQuery, graphql } from 'gatsby';
 // import FeaturePost from '../../../components/feature-post/feature-post';
 import { BannerWrapper, BannerInner, FeaturePosts, Title } from './style';
 

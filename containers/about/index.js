@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SocialProfile from '../../components/social-profile/social-profile';
+import Layout from '../../components/layout';
 import {
   IoLogoFacebook,
   IoLogoTwitter,
@@ -13,27 +14,26 @@ import {
   AboutDetails,
   SocialProfiles,
 } from './style';
-import Layout from '../../components/layout'
 
 const SocialLinks = [
   {
     icon: <IoLogoFacebook />,
-    url: 'https://www.facebook.com/redqinc/',
+    url: '#',
     tooltip: 'Facebook',
   },
   {
     icon: <IoLogoInstagram />,
-    url: 'https://www.instagram.com/redqinc/',
+    url: '#',
     tooltip: 'Instagram',
   },
   {
     icon: <IoLogoTwitter />,
-    url: 'https://twitter.com/redqinc',
+    url: '#',
     tooltip: 'Twitter',
   },
   {
     icon: <IoLogoLinkedin />,
-    url: 'https://www.linkedin.com/company/redqinc/',
+    url: '#',
     tooltip: 'Linked In',
   },
 ];
@@ -46,9 +46,9 @@ const About = () => {
     <Layout>
       <AboutWrapper>
         <AboutPageTitle>
-          <h2>About StoryHub</h2>
+          <h2>About The Common Logic</h2>
           <p>
-            StoryHub is a beautiful Gatsby Blog theme designed to showcase your
+            The Common Logic is a beautiful Blog theme designed to showcase your
             work in style. Perfect for designers, artists, photographers and
             developers to use for their portfolio website.
           </p>
@@ -61,13 +61,13 @@ const About = () => {
         <AboutDetails>
           <h2>Hey there, what’s up?</h2>
           <p>
-            RedQ Team is a creative agency specializing in building scalable,
+            XYZ Team is a creative agency specializing in building scalable,
             high-performance web & mobile application. Our main concern is
             creating more value into the application so that can help our
             customers to grow their business.
           </p>
           <p>
-            RedQ Team is a creative agency specializing in building scalable,
+            XYZ Team is a creative agency specializing in building scalable,
             high-performance web & mobile application. Our main concern is
             creating more value into the application so that can help our
             customers to grow their business.

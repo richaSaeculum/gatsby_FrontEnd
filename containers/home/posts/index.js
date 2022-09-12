@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { decode } from 'html-entities';
 import Button from '../../../components/button/button';
 import PostCardModern from '../../../components/post-card-modern/post-card-modern';
 import BlogPostsWrapper, { PostRow, PostGrid, SeeMore } from './style';
-
-
 
 const Posts = ({ serverData }) => {
 
@@ -12,7 +11,7 @@ const Posts = ({ serverData }) => {
     <BlogPostsWrapper>
       <PostRow>
         {serverData.data.map((item) => {
-          const title = item.title.rendered || item.slug;
+          const title = decode(item.title.rendered) || item.slug;
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',
