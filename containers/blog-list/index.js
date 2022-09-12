@@ -4,12 +4,13 @@ import PostCardModern from '../../components/post-card-modern/post-card-modern';
 import Pagination from '../../components/pagination/pagination';
 import Layout from '../../components/layout';
 import { BlogPostsWrapper, PostRow, PostGrid } from './style';
+import { getCategories } from '../../utils/helpers';
 
 const BlogList = ({ serverData }) => {
 
   const { currentPage, data, totalPage } = serverData;
 
-  return (
+ return (
     <Layout>
       <BlogPostsWrapper>
         <PostRow>
@@ -41,9 +42,10 @@ const BlogList = ({ serverData }) => {
                     title={item.title.rendered || item.slug}
                     // image={featuredImage}
                     url={item.id}
-                    description={item.excerpt.rendered}
+                    // description={item.excerpt.rendered}
+                    description={item.content.rendered}
                     date={item.date}
-                    tags={item.tags}
+                    tags={getCategories(item._embedded["wp:term"][0])}
                     placeholderBG={setColor}
                   />
                 </PostGrid>
