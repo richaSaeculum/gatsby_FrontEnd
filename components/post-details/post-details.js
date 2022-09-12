@@ -10,8 +10,10 @@ import {
   PostTags,
 } from './post-details.style';
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar, faTags } from "@fortawesome/free-solid-svg-icons";
 import moment from 'moment'
+import { decode } from 'html-entities';
 
 
 const PostDetails = ({
@@ -66,8 +68,32 @@ const PostDetails = ({
 
       {imagePosition == 'top' ? (
         <>
-          <PostTitle>{title}</PostTitle>
-          <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+          <PostTitle>{decode(title)}</PostTitle>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <FontAwesomeIcon
+              icon={faCalendar}
+              style={{ fontSize: 20, color: "#D10068", marginRight: "10px" }}
+            />
+            <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+          </div>
+          {tags == null ? null : (
+            <PostTags>
+              <FontAwesomeIcon
+                icon={faTags}
+                style={{ fontSize: 18, color: "#D10068", marginRight: "10px" }}
+              />
+              {tags.map((tag, index) => (
+                <Link
+                  key={index}
+                  href={{
+                    pathname: '/tags/[slug]',
+                    query: { slug: tag.slug, tagid: tag.id },
+                  }}>
+                  {`${tag.name}`}
+                </Link>
+              ))}
+            </PostTags>
+          )}
         </>
       ) : (
         ''
@@ -84,28 +110,45 @@ const PostDetails = ({
       ) : (
         ''
       )}
+
       <PostDescriptionWrapper className="post_des_wrapper">
         {imagePosition == 'left' ? (
           <>
-            <PostTitle>{title}</PostTitle>
-            <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+            <PostTitle>{decode(title)}</PostTitle>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FontAwesomeIcon
+                icon={faCalendar}
+                style={{ fontSize: 18, color: "#D10068", marginRight: "10px" }}
+              />
+              <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+            </div>
+            {tags == null ? null : (
+              <PostTags>
+                <FontAwesomeIcon
+                  icon={faTags}
+                  style={{ fontSize: 18, color: "#D10068", marginRight: "10px" }}
+                />
+                {tags.map((tag, index) => (
+                  <Link
+                    key={index}
+                    href={{
+                      pathname: '/tags/[slug]',
+                      query: { slug: tag.slug, tagid: tag.id },
+                    }}>
+                    {`#${tag.slug}`}
+                  </Link>
+                ))}
+              </PostTags>
+            )}
+
           </>
         ) : (
           ''
         )}
         <PostDescription
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: decode(description) }}
           className="post_des"
         />
-        {tags == null ? null : (
-          <PostTags>
-            {tags.map((tag, index) => (
-              <Link key={index} href={`/tags/${_.kebabCase(tag)}/`}>
-                {`#${tag}`}
-              </Link>
-            ))}
-          </PostTags>
-        )}
       </PostDescriptionWrapper>
     </PostDetailsWrapper>
   );

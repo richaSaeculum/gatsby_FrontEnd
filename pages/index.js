@@ -8,7 +8,9 @@ export default function MainPage(props) {
 
 export async function getServerSideProps() {
 
-  const { headers, data } = await axios.get(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts`);
+  const { headers, data } = await axios.get(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts?_embed`);
+
+  // const { data } = await axios.get(``)
 
   return {
     props: {

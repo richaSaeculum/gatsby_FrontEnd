@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
         {/* <Newsletter /> */}
         <Footer>
           Copyright &copy; {new Date().getFullYear()}
-          <a href="/"> XYZ Comp</a>
+          {/* <a href="/"> XYZ Comp</a> */}
         </Footer>
         <ScrollToTop
           showUnder={300}

@@ -14,7 +14,7 @@ import {
 } from './style';
 
 
-const Sidebar = ({ featuredPosts }) => {
+const Sidebar = ({ featuredPosts, tagsList }) => {
   // const Posts = Data.allMarkdownRemark.edges;
   const Tags = [
     {
@@ -54,7 +54,7 @@ const Sidebar = ({ featuredPosts }) => {
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>
         {(featuredPosts || []).map((item, index) => {
-          const title = decode(item.title.rendered) || item.slug;
+          const title = item.title.rendered || item.slug;
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',
@@ -92,11 +92,16 @@ const Sidebar = ({ featuredPosts }) => {
 
       <SidebarWidget>
         <WidgetTitle>Tags</WidgetTitle>
-        {Tags.map((tag) => (
-          <TagItem key={tag.fieldValue}>
+        {tagsList.map((tag, index) => (
+          <TagItem key={tag.name}>
             <span>#</span>
-            <Link href={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
-              <a>{tag.fieldValue} <span>({tag.totalCount})</span></a>
+            <Link
+              key={index}
+              href={{
+                pathname: '/tags/[slug]',
+                query: { slug: tag.slug, tagid: tag.id },
+              }}>
+              <a>{tag.name} <span>({tag.count})</span></a>
             </Link>
           </TagItem>
         ))}

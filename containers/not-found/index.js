@@ -45,7 +45,7 @@ const NotFound = () => {
       </NotFoundWrapper>
       <Footer>
         Copyright &copy; {new Date().getFullYear()}
-        <a href="https://redq.io/"> RedQ, Inc.</a>
+        {/* <a href="https://redq.io/"> RedQ, Inc.</a> */}
       </Footer>
     </>
   );

@@ -80,6 +80,10 @@ export const Excerpt = styled.div`
   font-weight: 400;
   line-height: 2;
   margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   @media (max-width: 990px) {
     font-size: 14px;
   }
@@ -99,7 +103,7 @@ export const PostTags = styled.div`
     color: ${themeGet('primary', '#D10068')};
     @media (max-width: 990px) {
       font-size: 13px;
-      margin-right: 25px;
+      margin-right: 16px;
     }
   }
 `;

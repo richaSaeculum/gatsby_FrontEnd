@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { decode } from 'html-entities';
 import _ from 'lodash';
 import Sidebar from '../sidebar';
 import Layout from '../../components/layout';
 import PostDetails from '../../components/post-details/post-details';
-// import PostCard from '../../components/post-card/post-card';
-// import {
-//   FacebookShareButton,
-//   TwitterShareButton,
-//   PinterestShareButton,
-//   RedditShareButton,
-// } from 'react-share';
+import PostCard from '../../components/post-card';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+} from 'react-share';
 import {
   IoLogoFacebook,
   IoLogoTwitter,
@@ -29,41 +29,43 @@ import {
   BlogPostComment,
   BlogDetailsContent,
 } from './style';
+import { getCategories } from '../../utils/helpers';
 
 const BlogPost = ({ serverData }) => {
-  const { post, featuredPosts } = serverData;
+  const { post, featuredPosts, tagsList } = serverData;
   // const post = props.data.wpPost;
   // // const { edges } = props.data.allMarkdownRemark;
   // const title = post.title;
   // const slug = post.slug;
   // const siteUrl = props.data.site.siteMetadata.siteUrl;
   // // const shareUrl = urljoin(siteUrl, slug);
+  let  shareUrl = '#'
 
   // const featuredImage = getImage(post.featuredImage?.node?.localFile);
   // const disqusConfig = {
   //   shortname: process.env.GATSBY_DISQUS_NAME,
   //   config: { identifier: slug, title },
   // };
-  
 
-
+  let tags = getCategories(post._embedded["wp:term"][0])
+  console.log("object", tags)
 
   return (
     <Layout>
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
           <PostDetails
-            title={decode(post?.title?.rendered)}
+            title={post?.title?.rendered}
             date={post?.date}
             // preview={featuredImage}
-            description={decode(post?.content.rendered)}
-          // description={content}
+            description={post?.content.rendered}
+            tags={tags}
           />
 
           {/* <BlogPostFooter>
-            {post?.frontmatter?.tags == null ? null : (
+            {post.tags == null ? null : (
               <PostTags className="post_tags">
-                {post?.frontmatter?.tags.map((tag, index) => (
+                {post.tags.map((tag, index) => (
                   <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
                     {`#${tag}`}
                   </Link>
@@ -75,18 +77,18 @@ const BlogPost = ({ serverData }) => {
               <FacebookShareButton url={shareUrl} quote={post.excerpt}>
                 <IoLogoFacebook />
               </FacebookShareButton>
-              <TwitterShareButton url={shareUrl} title={title}>
+              <TwitterShareButton url={shareUrl}>
                 <IoLogoTwitter />
               </TwitterShareButton>
               <PinterestShareButton
                 url={shareUrl}
-                media={urljoin(siteUrl, post?.publicURL)}
+                // media={urljoin(siteUrl, post?.publicURL)}
               >
                 <IoLogoPinterest />
               </PinterestShareButton>
               <RedditShareButton
                 url={shareUrl}
-                title={`${post.title}`}
+                // title={`${post.title}`}
               >
                 <IoLogoReddit />
               </RedditShareButton>
@@ -99,7 +101,7 @@ const BlogPost = ({ serverData }) => {
 
         </BlogDetailsContent >
 
-        <Sidebar featuredPosts={featuredPosts} />
+        <Sidebar featuredPosts={featuredPosts} tagsList={tagsList} />
       </BlogPostDetailsWrapper >
       {/* 
       {edges.length !== 0 && (

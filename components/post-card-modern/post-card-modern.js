@@ -1,5 +1,8 @@
 import * as React from 'react';
 import _ from 'lodash';
+import Link from 'next/link';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTags } from "@fortawesome/free-solid-svg-icons";
 import {
   PostCardModernWrapper,
   PostPreview,
@@ -9,7 +12,7 @@ import {
   Excerpt,
   PostTags,
 } from './post-card-modern.style';
-import Link from 'next/link';
+import { decode } from 'html-entities';
 
 
 const PostCardModern = ({
@@ -51,26 +54,39 @@ const PostCardModern = ({
       )}
 
       <PostDetails className="post_details">
-        {tags == null ? null : (
-          <PostTags className="post_tags">
-            {tags.map((tag, index) => (
-              <Link key={index} href={`/tags/${_.kebabCase(tag)}/`}>
-                {`#${tag}`}
-              </Link>
-            ))}
-          </PostTags>
-        )}
         <PostTitle className="post_title">
-          <Link href={`/${url.toString()}`}>{title}</Link>
+          <Link href={`/${url.toString()}`}>{decode(title)}</Link>
         </PostTitle>
+        {tags == null ? null : (
+          <>
+            <PostTags className="post_tags">
+              <FontAwesomeIcon
+                icon={faTags}
+                style={{ fontSize: 18, color: "#D10068", marginRight: "10px" }}
+              />
+              {tags.map((tag, index) => (
+                // <Link key={index} href={`/tags/${_.kebabCase(tag.name)}/`}>
+                <Link
+                  key={index}
+                  href={{
+                    pathname: '/tags/[slug]',
+                    query: { slug: tag.slug, tagid: tag.id },
+                  }}>
+                  {`${tag.name}`}
+                </Link>
+              ))}
+            </PostTags>
+          </>
+        )}
         {description && (
           <Excerpt
             dangerouslySetInnerHTML={{
-              __html: description,
+              __html: decode(description),
             }}
             className="excerpt"
           />
         )}
+        
       </PostDetails>
     </PostCardModernWrapper>
   );

@@ -8,6 +8,7 @@ import {
   PostTags,
 } from './feature-post.style';
 import Link from 'next/link';
+import { decode } from 'html-entities';
 
 const FeaturedPost = ({
   image,
@@ -38,7 +39,7 @@ const FeaturedPost = ({
 
       <PostDetails>
         <PostTitle className="post_title">
-          <Link href={`/${url.toString()}`}>{title}</Link>
+          <Link href={`/${url.toString()}`}>{decode(title)}</Link>
         </PostTitle>
         {/* <PostMeta>
           {tags == null ? null : (

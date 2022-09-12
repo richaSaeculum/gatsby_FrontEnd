@@ -29,7 +29,7 @@ export const PostDetails = styled.div`
 `;
 
 export const PostDate = styled.div`
-  font-size: 90px;
+  font-size: 56px;
   font-weight: 700;
   text-align: center;
   padding: 30px 35px 15px 35px;
@@ -64,7 +64,7 @@ export const PostContent = styled.div`
 `;
 
 export const PostTitle = styled.h2`
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: ${themeGet('colors.textColor', '#292929')};
   line-height: 1.53;
@@ -85,12 +85,16 @@ export const PostTitle = styled.h2`
   }
 `;
 
-export const Excerpt = styled.p`
+export const Excerpt = styled.div`
   font-size: ${themeGet('fontSizes.3', '15')}px;
   color: ${themeGet('textColor', '#292929')};
   font-weight: 400;
   line-height: 2;
   margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   @media (max-width: 990px) {
     font-size: 14px;
   }

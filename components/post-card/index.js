@@ -11,6 +11,8 @@ import {
   PostTags,
 } from './post-card.style';
 import Link from 'next/link';
+import moment from 'moment/moment';
+import { decode } from 'html-entities';
 
 
 
@@ -47,7 +49,7 @@ const PostCard = ({
         {date && (
           <PostDate
             dangerouslySetInnerHTML={{
-              __html: date,
+              __html: moment(date).format("DD [<span>] MMMM [</span>]"),
             }}
             className="post_date"
           />
@@ -55,12 +57,12 @@ const PostCard = ({
 
         <PostContent className="post_content">
           <PostTitle className="post_title">
-            <Link href={`/${url}`}>{title}</Link>
+            <Link href={`/${url}`}>{decode(title)}</Link>
           </PostTitle>
           {description && (
             <Excerpt
               dangerouslySetInnerHTML={{
-                __html: description,
+                __html: decode(description),
               }}
               className="excerpt"
             />
@@ -69,7 +71,13 @@ const PostCard = ({
           {tags == null ? null : (
             <PostTags className="post_tags">
               {tags.map((tag, index) => (
-                <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
+                // <Link key={index} to={`/tags/${_.kebabCase(tag)}/`}>
+                <Link
+                  key={index}
+                  href={{
+                    pathname: '/tags/[slug]',
+                    query: { slug: tag.slug, tagid: tag.id },
+                  }}>
                   {`#${tag}`}
                 </Link>
               ))}

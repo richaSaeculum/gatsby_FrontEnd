@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { decode } from 'html-entities';
 import Button from '../../../components/button/button';
 import PostCardModern from '../../../components/post-card-modern/post-card-modern';
 import BlogPostsWrapper, { PostRow, PostGrid, SeeMore } from './style';
+import { getCategories } from '../../../utils/helpers';
 
 const Posts = ({ serverData }) => {
 
@@ -11,7 +11,9 @@ const Posts = ({ serverData }) => {
     <BlogPostsWrapper>
       <PostRow>
         {serverData.data.map((item) => {
-          const title = decode(item.title.rendered) || item.slug;
+          const title = item.title.rendered || item.slug;
+
+          let tags = getCategories(item._embedded["wp:term"][0]);
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',
@@ -37,9 +39,10 @@ const Posts = ({ serverData }) => {
                 title={title}
                 // image={featuredImage}
                 url={item.id}
-                description={item.excerpt.rendered}
+                // description={item.excerpt.rendered}
+                description={item.content.rendered}
                 date={item.date}
-                tags={item.tags}
+                tags={tags}
                 placeholderBG={setColor}
               />
             </PostGrid>

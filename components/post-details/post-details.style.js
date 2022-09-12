@@ -58,6 +58,7 @@ export const PostTitle = styled.h1`
 
 export const PostDate = styled.span`
   display: block;
+  margin-bottom: 0;
   font-size: ${themeGet('fontSizes.3', '15')}px;
   color: ${themeGet('textColor', '#292929')};
   font-weight: 400;
@@ -254,7 +255,8 @@ export const PostTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 60px;
+  // margin-top: 60px;
+  margin-top: 20px;
 
   a {
     display: block;

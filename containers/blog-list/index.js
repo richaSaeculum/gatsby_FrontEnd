@@ -38,7 +38,7 @@ const BlogList = ({ serverData }) => {
                 <PostGrid>
                   <PostCardModern
                     key={item.slug}
-                    title={decode(item.title.rendered) || item.slug}
+                    title={item.title.rendered || item.slug}
                     // image={featuredImage}
                     url={item.id}
                     description={item.excerpt.rendered}
