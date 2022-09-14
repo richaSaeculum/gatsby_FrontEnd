@@ -41,18 +41,18 @@ export const PostTitle = styled.h1`
   font-weight: 700;
   color: ${themeGet('colors.textColor', '#292929')};
   line-height: 1.53;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   @media (max-width: 1200px) {
     font-size: 26px;
     margin-bottom: 15px;
   }
   @media (max-width: 990px) {
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
   }
   @media (max-width: 575px) {
     font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
   }
 `;
 
@@ -98,16 +98,16 @@ export const PostPreview = styled.div`
 `;
 
 export const PostDescriptionWrapper = styled.div`
-  margin-top: 90px;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 870px;
   max-width: 100%;
   @media (max-width: 1200px) {
-    margin-top: 70px;
+    margin-top: 30px;
   }
   @media (max-width: 575px) {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 `;
 
@@ -119,6 +119,11 @@ export const PostDescription = styled.div`
     @media (max-width: 767px) {
       margin-bottom: 40px;
     }
+  }
+
+  img{
+    width: 100%;
+    height: auto
   }
 
   p {

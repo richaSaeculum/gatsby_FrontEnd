@@ -5,6 +5,7 @@ export const TagPostsWrapper = styled.div`
   margin: 0 auto;
   padding-top: 120px;
   position: relative;
+  min-height: calc(100vh - 85px - 78px - 20px);
   @media (min-width: 990px) {
     width: 900px;
   }
@@ -22,7 +23,7 @@ export const TagPostsWrapper = styled.div`
   }
 
   .post_card {
-    margin-bottom: 120px;
+    margin-bottom: 56px;
     &:last-child {
       margin-bottom: 0;
     }

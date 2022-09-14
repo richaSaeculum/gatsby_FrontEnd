@@ -48,7 +48,6 @@ const BlogPost = ({ serverData }) => {
   // };
 
   let tags = getCategories(post._embedded["wp:term"][0])
-  console.log("object", tags)
 
   return (
     <Layout>

@@ -34,7 +34,7 @@ export const Logo = styled.div`
 		margin: 0 25px;
 	}
 	@media (max-width: 575px) {
-		max-width: 90px;
+		// max-width: 90px;
 	}
 	img {
 		display: block;

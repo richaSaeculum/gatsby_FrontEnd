@@ -113,7 +113,7 @@ export const RelatedPostItem = styled.div`
 `;
 export const TagPostsWrapper = styled.div`
   margin: 0 auto;
-  padding-top: 120px;
+  padding: 120px;
   position: relative;
   @media (min-width: 990px) {
     width: 900px;
@@ -128,13 +128,13 @@ export const TagPostsWrapper = styled.div`
     padding: 80px 45px 30px 45px;
   }
   @media (max-width: 575px) {
-    padding: 60px 25px 0 25px;
+    padding: 60px 25px 30px 25px;
   }
 
   .post_card {
     margin-bottom: 120px;
     &:last-child {
-      margin-bottom: 0;
+      // margin-bottom: 0;
     }
     @media (max-width: 990px) {
       margin-bottom: 80px;
@@ -237,7 +237,8 @@ export const BlogPostDetailsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 90px 0 120px 0;
+  padding: 40px 0 0px 0;
+  min-height: calc(100vh - 85px - 78px - 20px);
   @media (min-width: 990px) {
     width: 900px;
   }
@@ -248,10 +249,10 @@ export const BlogPostDetailsWrapper = styled.div`
     width: 1170px;
   }
   @media (max-width: 990px) {
-    padding: 80px 45px 0 45px;
+    padding: 40px 45px 0 45px;
   }
   @media (max-width: 575px) {
-    padding: 60px 25px 0 25px;
+    padding: 30px 25px 0 25px;
   }
 `;
 
