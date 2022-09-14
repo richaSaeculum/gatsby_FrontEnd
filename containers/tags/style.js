@@ -20,6 +20,7 @@ export const TagPostsWrapper = styled.div`
   }
   @media (max-width: 575px) {
     padding: 60px 25px 0 25px;
+    min-height: calc(100vh - 63px - 52px - 20px);
   }
 
   .post_card {

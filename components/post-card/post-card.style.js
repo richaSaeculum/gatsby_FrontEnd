@@ -26,7 +26,7 @@ export const PostPreview = styled.div`
 
 export const PostDetails = styled.div`
   display: flex;
-`;
+ `;
 
 export const PostDate = styled.div`
   font-size: 56px;
@@ -97,6 +97,9 @@ export const Excerpt = styled.div`
   -webkit-box-orient: vertical;
   @media (max-width: 990px) {
     font-size: 14px;
+  }
+  img {
+    width:100%;
   }
 `;
 
