@@ -30,22 +30,25 @@ import {
   BlogDetailsContent,
 } from './style';
 import { getCategories } from '../../utils/helpers';
+import { DiscussionEmbed } from 'disqus-react';
 
 const BlogPost = ({ serverData }) => {
   const { post, featuredPosts, tagsList } = serverData;
-  // const post = props.data.wpPost;
-  // // const { edges } = props.data.allMarkdownRemark;
-  // const title = post.title;
-  // const slug = post.slug;
   // const siteUrl = props.data.site.siteMetadata.siteUrl;
   // // const shareUrl = urljoin(siteUrl, slug);
-  let  shareUrl = '#'
+  let shareUrl = '#'
 
   // const featuredImage = getImage(post.featuredImage?.node?.localFile);
-  // const disqusConfig = {
-  //   shortname: process.env.GATSBY_DISQUS_NAME,
-  //   config: { identifier: slug, title },
-  // };
+  const disqusConfig = {
+    shortname: process.env.DISQUS_SHORT_NAME,
+    config: {
+      // url: `http://localhost:3590/${post.id}`,
+      url: post?.link,
+      identifier: post?.id.toString(),
+      title: post?.title?.rendered,
+      language: 'en_US'
+    },
+  };
 
   let tags = getCategories(post._embedded["wp:term"][0])
 
@@ -58,6 +61,7 @@ const BlogPost = ({ serverData }) => {
             date={post?.date}
             // preview={featuredImage}
             description={post?.content.rendered}
+            imagePosition={'top'}
             tags={tags}
           />
 
@@ -94,9 +98,10 @@ const BlogPost = ({ serverData }) => {
             </PostShare>
           </BlogPostFooter> */}
 
-          {/* <BlogPostComment>
+          <BlogPostComment>
             <DiscussionEmbed {...disqusConfig} />
-          </BlogPostComment> */}
+            {/* <Recommendations  {...disqusConfig} /> */}
+          </BlogPostComment>
 
         </BlogDetailsContent >
 
