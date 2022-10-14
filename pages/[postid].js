@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
     props: {
       post: data,
       featuredPosts: res.data,
-      tagsList: tags
+      tagsList: tags.filter(tag => tag.id !== 1)
     }
   }
 }
