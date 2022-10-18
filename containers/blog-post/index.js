@@ -31,13 +31,14 @@ import {
 } from './style';
 import { getCategories } from '../../utils/helpers';
 import { DiscussionEmbed } from 'disqus-react';
+import GoogleAd from '../../components/google-ad/GoogleAd';
 
 const BlogPost = ({ serverData }) => {
   const { post, featuredPosts, tagsList } = serverData;
   // const siteUrl = props.data.site.siteMetadata.siteUrl;
   // // const shareUrl = urljoin(siteUrl, slug);
   let shareUrl = '#'
-
+  // post.author
   // const featuredImage = getImage(post.featuredImage?.node?.localFile);
   const disqusConfig = {
     shortname: process.env.DISQUS_SHORT_NAME,
@@ -54,6 +55,9 @@ const BlogPost = ({ serverData }) => {
 
   return (
     <Layout>
+      <div style={{ background: 'red' }}>
+        <GoogleAd />
+      </div>
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
           <PostDetails
@@ -149,6 +153,9 @@ const BlogPost = ({ serverData }) => {
           </RelatedPostItems>
         </RelatedPostWrapper>
       )} */}
+      <div style={{ background: 'red' }}>
+        <GoogleAd />
+      </div>
     </Layout >
   );
 };

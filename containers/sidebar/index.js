@@ -12,6 +12,7 @@ import {
   InstagramWrapper,
   InstagramPhoto,
 } from './style';
+import GoogleAd from '../../components/google-ad/GoogleAd';
 
 
 const Sidebar = ({ featuredPosts, tagsList }) => {
@@ -41,15 +42,18 @@ const Sidebar = ({ featuredPosts, tagsList }) => {
 
   return (
     <SidebarWrapper>
-      {/* <SidebarWidget>
+      <SidebarWidget>
         <WidgetTitle>Promotion</WidgetTitle>
-        <a
+        {/* <a
           href="https://1.envato.market/r1jdv"
           target="_blank"
         >
           <img src={'/images/ad.png'} alt="Get fff" />
-        </a>
-      </SidebarWidget> */}
+        </a> */}
+        <div style={{ background: 'red' }}>
+          <GoogleAd />
+        </div>
+      </SidebarWidget>
 
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>
