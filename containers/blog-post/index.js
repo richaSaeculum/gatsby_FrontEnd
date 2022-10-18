@@ -55,11 +55,11 @@ const BlogPost = ({ serverData }) => {
 
   return (
     <Layout>
-      <div style={{ background: 'red' }}>
-        <GoogleAd />
-      </div>
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
+          <div style={{ background: 'red', marginBottom: '18px' }}>
+            <GoogleAd />
+          </div>
           <PostDetails
             title={post?.title?.rendered}
             date={post?.date}
@@ -101,7 +101,9 @@ const BlogPost = ({ serverData }) => {
               </RedditShareButton>
             </PostShare>
           </BlogPostFooter> */}
-
+          <div style={{ background: 'red' }}>
+            <GoogleAd />
+          </div>
           <BlogPostComment>
             <DiscussionEmbed {...disqusConfig} />
             {/* <Recommendations  {...disqusConfig} /> */}
@@ -153,9 +155,6 @@ const BlogPost = ({ serverData }) => {
           </RelatedPostItems>
         </RelatedPostWrapper>
       )} */}
-      <div style={{ background: 'red' }}>
-        <GoogleAd />
-      </div>
     </Layout >
   );
 };
