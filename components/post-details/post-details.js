@@ -27,7 +27,7 @@ const PostDetails = ({
   ...props
 }) => {
   const addClass = ['post_details'];
-
+  
   if (imagePosition == 'left') {
     addClass.push('image_left');
   }

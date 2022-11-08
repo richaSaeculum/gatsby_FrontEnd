@@ -78,7 +78,7 @@ const PostCard = ({
                     pathname: '/tags/[slug]',
                     query: { slug: tag.slug, tagid: tag.id },
                   }}>
-                  {`#${tag}`}
+                  {`#${tag.name}`}
                 </Link>
               ))}
             </PostTags>

@@ -1,9 +1,9 @@
 export const getCategories = (list) => {
-  let a = list.map(item => {
+  let a = (list || []).map(item => {
     return {
-      id: item.id,
-      name: item.name,
-      slug: item.slug
+      id: item.categoryId,
+      name: item.category,
+      slug: item.category
     }
   })
   return a

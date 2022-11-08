@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/layout';
 import PostCard from '../../components/post-card';
+import { getCategories } from '../../utils/helpers';
 import { TagPostsWrapper, TagPageHeading, TagName } from './style';
 
 const Tags = ({ serverData }) => {
@@ -16,13 +17,12 @@ const Tags = ({ serverData }) => {
         </TagPageHeading>
         {posts.map((item) => (
           <PostCard
-            key={item.slug}
-            title={item.title?.rendered}
+            title={item.title}
             url={item.id}
             // description={item.excerpt.rendered}
-            description={item.content.rendered}
-            date={item.date}
-            tags={item.tags}
+            description={item.content}
+            date={item.created_on}
+            tags={getCategories(item.categories)}
           />
         ))}
       </TagPostsWrapper>

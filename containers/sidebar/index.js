@@ -58,7 +58,6 @@ const Sidebar = ({ featuredPosts, tagsList }) => {
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>
         {(featuredPosts || []).map((item, index) => {
-          const title = item.title.rendered || item.slug;
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',
@@ -79,15 +78,14 @@ const Sidebar = ({ featuredPosts, tagsList }) => {
 
           return (
             <FeaturePost
-              key={item.slug}
-              title={title}
+              title={item.title}
               // image={
               //   node.frontmatter.cover == null
               //     ? null
               //     : node.frontmatter.cover.childImageSharp.gatsbyImageData
               // }
               url={item.id}
-              tags={item.tags}
+              tags={item.categories}
               placeholderBG={setColor}
             />
           );
@@ -105,7 +103,7 @@ const Sidebar = ({ featuredPosts, tagsList }) => {
                 pathname: '/tags/[slug]',
                 query: { slug: tag.slug, tagid: tag.id },
               }}>
-              <a>{tag.name} <span>({tag.count})</span></a>
+              <a>{tag.name} <span>{tag.count}</span></a>
             </Link>
           </TagItem>
         ))}

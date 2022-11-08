@@ -34,7 +34,8 @@ import { DiscussionEmbed } from 'disqus-react';
 import GoogleAd from '../../components/google-ad/GoogleAd';
 
 const BlogPost = ({ serverData }) => {
-  const { post, featuredPosts, tagsList } = serverData;
+  const { post, featuredPosts = [], tagsList } = serverData;
+  
   // const siteUrl = props.data.site.siteMetadata.siteUrl;
   // // const shareUrl = urljoin(siteUrl, slug);
   let shareUrl = '#'
@@ -51,7 +52,7 @@ const BlogPost = ({ serverData }) => {
     },
   };
 
-  let tags = getCategories(post._embedded["wp:term"][0])
+  let tags = getCategories(post.categories)
 
   return (
     <Layout>
@@ -61,10 +62,10 @@ const BlogPost = ({ serverData }) => {
             <GoogleAd />
           </div>
           <PostDetails
-            title={post?.title?.rendered}
-            date={post?.date}
+            title={post?.title}
+            date={post?.created_on}
             // preview={featuredImage}
-            description={post?.content.rendered}
+            description={post?.content}
             imagePosition={'top'}
             tags={tags}
           />

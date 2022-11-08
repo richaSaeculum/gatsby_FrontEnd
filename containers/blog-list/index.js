@@ -38,14 +38,13 @@ const BlogList = ({ serverData }) => {
               <Fragment key={index}>
                 <PostGrid>
                   <PostCardModern
-                    key={item.slug}
-                    title={item.title.rendered || item.slug}
+                    title={item.title}
                     // image={featuredImage}
                     url={item.id}
                     // description={item.excerpt.rendered}
-                    description={item.content.rendered}
+                    description={item.content}
                     date={item.date}
-                    tags={getCategories(item._embedded["wp:term"][0])}
+                    tags={getCategories(item.categories)}
                     placeholderBG={setColor}
                   />
                 </PostGrid>

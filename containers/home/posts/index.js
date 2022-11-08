@@ -5,15 +5,15 @@ import PostCardModern from '../../../components/post-card-modern/post-card-moder
 import BlogPostsWrapper, { PostRow, PostGrid, SeeMore } from './style';
 import { getCategories } from '../../../utils/helpers';
 
-const Posts = ({ serverData }) => {
+const Posts = ({ serverData: { data } }) => {
 
   return (
     <BlogPostsWrapper>
       <PostRow>
-        {serverData.data.map((item) => {
-          const title = item.title.rendered || item.slug;
+        {(data || []).map((item, index) => {
 
-          let tags = getCategories(item._embedded["wp:term"][0]);
+          // let tags = getCategories(item._embedded["wp:term"][0]);
+          let tags = getCategories(item.categories);
           // Random Placeholder Color
           const placeholderColors = [
             '#55efc4',
@@ -33,15 +33,14 @@ const Posts = ({ serverData }) => {
             ];
 
           return (
-            <PostGrid key={item.slug}>
+            <PostGrid key={index}>
               <PostCardModern
-                key={item.slug}
-                title={title}
+                title={item.title}
                 // image={featuredImage}
                 url={item.id}
                 // description={item.excerpt.rendered}
-                description={item.content.rendered}
-                date={item.date}
+                description={item.content}
+                date={item.created_on}
                 tags={tags}
                 placeholderBG={setColor}
               />
