@@ -12,10 +12,9 @@ import {
   InstagramWrapper,
   InstagramPhoto,
 } from './style';
-import GoogleAd from '../../components/google-ad/GoogleAd';
+import Ad from '../../components/Ad/Ad';
 
-
-const Sidebar = ({ featuredPosts, tagsList }) => {
+const Sidebar = ({ featuredPosts, tagsList, post }) => {
   // const Posts = Data.allMarkdownRemark.edges;
   const Tags = [
     {
@@ -50,10 +49,11 @@ const Sidebar = ({ featuredPosts, tagsList }) => {
         >
           <img src={'/images/ad.png'} alt="Get fff" />
         </a> */}
-        <div style={{ background: 'red' }}>
-          <GoogleAd />
-        </div>
       </SidebarWidget>
+
+      <div style={{ marginBottom: "16px" }}>
+        <Ad adId={`TCL_${post?.author}_3`} />
+      </div>
 
       <SidebarWidget>
         <WidgetTitle>Latest Post</WidgetTitle>

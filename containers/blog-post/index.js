@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { decode } from 'html-entities';
 import _ from 'lodash';
 import Sidebar from '../sidebar';
@@ -31,10 +31,22 @@ import {
 } from './style';
 import { getCategories } from '../../utils/helpers';
 import { DiscussionEmbed } from 'disqus-react';
-import GoogleAd from '../../components/google-ad/GoogleAd';
+import Ad from '../../components/Ad/Ad';
 
 const BlogPost = ({ serverData }) => {
   const { post, featuredPosts = [], tagsList } = serverData;
+
+  const removeSlots = function () {
+    const { googletag } = window
+    googletag.cmd.push(function () { googletag.destroySlots() })
+  }
+
+  useEffect(() => {
+    return () => {
+      removeSlots();
+    }
+  }, [])
+
   
   // const siteUrl = props.data.site.siteMetadata.siteUrl;
   // // const shareUrl = urljoin(siteUrl, slug);
@@ -58,8 +70,8 @@ const BlogPost = ({ serverData }) => {
     <Layout>
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
-          <div style={{ background: 'red', marginBottom: '18px' }}>
-            <GoogleAd />
+          <div style={{ marginBottom: '18px' }}>
+            <Ad adId={`TCL_${post?.author}_1`} />
           </div>
           <PostDetails
             title={post?.title}
@@ -102,8 +114,8 @@ const BlogPost = ({ serverData }) => {
               </RedditShareButton>
             </PostShare>
           </BlogPostFooter> */}
-          <div style={{ background: 'red' }}>
-            <GoogleAd />
+          <div>
+            <Ad adId={`TCL_${post?.author}_2`} />
           </div>
           <BlogPostComment>
             <DiscussionEmbed {...disqusConfig} />
@@ -112,7 +124,7 @@ const BlogPost = ({ serverData }) => {
 
         </BlogDetailsContent >
 
-        <Sidebar featuredPosts={featuredPosts} tagsList={tagsList} />
+        <Sidebar featuredPosts={featuredPosts} tagsList={tagsList} post={post} />
       </BlogPostDetailsWrapper >
       {/* 
       {edges.length !== 0 && (

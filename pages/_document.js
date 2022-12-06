@@ -13,9 +13,13 @@ export default class MyDocument extends Document {
           <title>My page</title>
           <script
             async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.PUBLIC_GOOGLE_ADSENSE}`}
-            crossOrigin="anonymous"
-          />
+            src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+          ></script>
+
+          <script>
+            var googletag = googletag || { };
+            googletag.cmd = googletag.cmd || [];
+          </script>
         </Head>
         <body>
           <Main />
