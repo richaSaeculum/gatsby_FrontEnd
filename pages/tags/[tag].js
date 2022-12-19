@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import Tags from '../../containers/tags';
+import { API_URL } from '../../utils/constants';
 
 const TagsPage = (props) => {
   return <Tags serverData={props} />
@@ -12,7 +13,7 @@ export async function getServerSideProps(context) {
   let { tagid, tag } = context.query;
 
   // const { data } = await axios.get(`https://gatsby.saeculumsolutions.com/wp-json/wp/v2/posts?categories=${tagid}&_embed`);
-  const { data } = await axios.get(`http://52.22.62.85:9030/api/user/articles/list?category=${tagid}&status=publish`);
+  const { data } = await axios.get(`${API_URL}user/articles/list?category=${tagid}&status=publish`);
 
   return {
     props: {

@@ -65,4 +65,6 @@ const ads = {
   }
 }
 
-export { ads }
+const API_URL = "http://52.22.62.85:9030/api/"
+
+export { ads, API_URL }
