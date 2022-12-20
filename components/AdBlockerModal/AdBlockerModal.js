@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { ModalWrapper, NewsletterDescription, NewsletterInnerWrapper, NewsletterInputWrapper, NewsletterTitle, NewsletterWrapper } from './AdBlocker.style';
+import { ModalWrapper, NewsletterDescription, NewsletterInnerWrapper, NewsletterInputWrapper, NewsletterTitle, NewsletterWrapper } from './AdBlockerModal.style';
 
-const AdBlockerComponent = ({ isAdBlocker = false }) => {
+const AdBlockerModal = ({ isAdBlocker = false }) => {
 
   console.log(isAdBlocker, "isAdBlocker in ad blocker")
 
   const [open, setOpen] = useState();
 
   useEffect(() => {
-    setOpen(isAdBlocker)
+    setOpen(isAdBlocker);
+
+    if (isAdBlocker) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+    
   }, [isAdBlocker])
 
 
@@ -32,4 +39,4 @@ const AdBlockerComponent = ({ isAdBlocker = false }) => {
   )
 }
 
-export default AdBlockerComponent
+export default AdBlockerModal

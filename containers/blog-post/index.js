@@ -32,7 +32,7 @@ import {
 import { getCategories } from '../../utils/helpers';
 import { DiscussionEmbed } from 'disqus-react';
 import Ad from '../../components/Ad/Ad';
-import AdBlockerComponent from '../../components/AdBlockerComponent/AdBlockerComponent';
+import AdBlockerModal from '../../components/AdBlockerModal/AdBlockerModal';
 
 const BlogPost = ({ serverData }) => {
   const { post, featuredPosts = [], tagsList } = serverData;
@@ -74,7 +74,7 @@ const BlogPost = ({ serverData }) => {
 
   return (
     <Layout>
-      {isAdBlocker && <AdBlockerComponent isAdBlocker={isAdBlocker} />}
+      {isAdBlocker && <AdBlockerModal isAdBlocker={isAdBlocker} />}
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
           <div style={{ marginBottom: '18px' }}>
