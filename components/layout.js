@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <>
         <ResetCss />
-        <Sticky top={0} innerZ={9999} activeClass="nav-sticky">
+        <Sticky top={0} innerZ={99} activeClass="nav-sticky">
           <Navbar />
         </Sticky>
 
