@@ -9,23 +9,25 @@ function Ad({ adId }) {
   useEffect(() => {
     if (typeof window !== undefined) {
       const { googletag } = window;
+      console.log(googletag, "googletaggoogletaggoogletag")
+      if (googletag) {
+        googletag.cmd.push(function () {
+          googletag
+            .defineSlot(
+              `/22654691416/${adId}`,
+              ad.sizes,
+              `div-gpt-ad-${adId}`
+            )
+            .defineSizeMapping(ad.mapping)
+            .addService(googletag.pubads());
 
-      googletag.cmd.push(function () {
-        googletag
-          .defineSlot(
-            `/22654691416/${adId}`,
-            ad.sizes,
-            `div-gpt-ad-${adId}`
-          )
-          .defineSizeMapping(ad.mapping)
-          .addService(googletag.pubads());
+          googletag.enableServices();
+        });
 
-        googletag.enableServices();
-      });
-
-      googletag.cmd.push(function () {
-        googletag.display(`div-gpt-ad-${adId}`);
-      });
+        googletag.cmd.push(function () {
+          googletag.display(`div-gpt-ad-${adId}`);
+        });
+      }
     }
   }, [adId])
 
