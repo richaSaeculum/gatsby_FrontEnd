@@ -65,6 +65,7 @@ const ads = {
   }
 }
 
-const API_URL = "http://52.22.62.85:9030/api/"
+// const API_URL = "http://52.22.62.85:9030/api/"
+const API_URL = "https://gatsby-api.onrender.com/api/"
 
 export { ads, API_URL }
