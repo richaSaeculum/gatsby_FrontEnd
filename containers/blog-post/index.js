@@ -78,7 +78,7 @@ const BlogPost = ({ serverData }) => {
       <BlogPostDetailsWrapper>
         <BlogDetailsContent>
           <div style={{ marginBottom: '18px' }}>
-            <Ad adId={`TCL_${post?.author}_1`} />
+            <Ad adId={`TCL_${post?.author}_1`} postId={post?.id} />
           </div>
           <PostDetails
             title={post?.title}
@@ -122,7 +122,7 @@ const BlogPost = ({ serverData }) => {
             </PostShare>
           </BlogPostFooter> */}
           <div>
-            <Ad adId={`TCL_${post?.author}_2`} />
+            <Ad adId={`TCL_${post?.author}_2`} postId={post?.id} />
           </div>
           <BlogPostComment>
             <DiscussionEmbed {...disqusConfig} />

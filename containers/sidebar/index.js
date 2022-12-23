@@ -52,7 +52,7 @@ const Sidebar = ({ featuredPosts, tagsList, post }) => {
       </SidebarWidget>
 
       <div style={{ marginBottom: "16px" }}>
-        <Ad adId={`TCL_${post?.author}_3`} />
+        <Ad adId={`TCL_${post?.author}_3`} postId={post?.id} />
       </div>
 
       <SidebarWidget>
