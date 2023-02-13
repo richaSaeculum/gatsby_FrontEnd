@@ -87,6 +87,8 @@ const BlogPost = ({ serverData }) => {
             description={post?.content}
             imagePosition={'top'}
             tags={tags}
+            // authorName={post?.authorName}
+            authorName={post?.user_first_name + ' ' + post?.user_last_name}
           />
 
           {/* <BlogPostFooter>

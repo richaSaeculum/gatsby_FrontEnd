@@ -59,10 +59,24 @@ export const PostTitle = styled.h1`
 export const PostDate = styled.span`
   display: block;
   margin-bottom: 0;
-  font-size: ${themeGet('fontSizes.3', '15')}px;
+  font-size: ${themeGet('fontSizes.1', '15')}px;
   color: ${themeGet('textColor', '#292929')};
   font-weight: 400;
   text-transform: uppercase;
+  @media (max-width: 990px) {
+    font-size: 14px;
+  }
+  @media (max-width: 575px) {
+    font-size: 13px;
+  }
+`;
+
+export const PostAuthorName = styled.span`
+  display: block;
+  margin-bottom: 0;
+  font-size: ${themeGet('fontSizes.1', '15')}px;
+  color: ${themeGet('textColor', '#292929')};
+  font-weight: 400;
   @media (max-width: 990px) {
     font-size: 14px;
   }
@@ -98,7 +112,7 @@ export const PostPreview = styled.div`
 `;
 
 export const PostDescriptionWrapper = styled.div`
-  margin-top: 40px;
+  margin-top: 28px;
   margin-left: auto;
   margin-right: auto;
   width: 870px;
@@ -266,7 +280,7 @@ export const PostTags = styled.div`
   a {
     display: block;
     margin-right: 30px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: ${themeGet('primary', '#D10068')};
   }

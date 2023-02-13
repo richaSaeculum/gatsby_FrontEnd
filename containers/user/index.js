@@ -2,20 +2,20 @@ import React from 'react';
 import Layout from '../../components/layout';
 import PostCard from '../../components/post-card';
 import { getCategories } from '../../utils/helpers';
-import { TagPostsWrapper, TagPageHeading, TagName } from './style';
+import { UserWrapper, UserAboutWrapper, TagPageHeading, TagName } from './style';
 
-const Tags = ({ serverData }) => {
-  const { posts, tag } = serverData;
+const User = ({ serverData }) => {
+  // const { posts, tag } = serverData;
   // const { edges, totalCount } = data.allMarkdownRemark;
 
   return (
     <Layout>
-      <TagPostsWrapper>
-        <TagPageHeading>
-          <TagName>{tag}</TagName>
-          {`A collection of ${posts.length} post`}
-        </TagPageHeading>
-        {posts.map((item, index) => (
+      <UserWrapper>
+        <UserAboutWrapper>
+          <TagName>{"tag"}</TagName>
+          {`A collection of 2 post`}
+        </UserAboutWrapper>
+        {/* {posts.map((item, index) => (
           <PostCard
             key={index}
             title={item.title}
@@ -25,10 +25,10 @@ const Tags = ({ serverData }) => {
             date={item.created_on}
             tags={getCategories(item.categories)}
           />
-        ))}
-      </TagPostsWrapper>
+        ))} */}
+      </UserWrapper>
     </Layout>
   );
 };
 
-export default Tags;
+export default User;

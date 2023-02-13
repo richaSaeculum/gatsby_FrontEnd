@@ -8,10 +8,11 @@ import {
   PostDescriptionWrapper,
   PostDescription,
   PostTags,
+  PostAuthorName,
 } from './post-details.style';
 import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faTags } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faTags, faUser } from "@fortawesome/free-solid-svg-icons";
 import moment from 'moment'
 import { decode } from 'html-entities';
 
@@ -23,11 +24,12 @@ const PostDetails = ({
   description,
   tags,
   className,
+  authorName,
   imagePosition,
   ...props
 }) => {
   const addClass = ['post_details'];
-  
+
   if (imagePosition == 'left') {
     addClass.push('image_left');
   }
@@ -69,18 +71,27 @@ const PostDetails = ({
       {imagePosition == 'top' ? (
         <>
           <PostTitle>{decode(title)}</PostTitle>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <FontAwesomeIcon
-              icon={faCalendar}
-              style={{ fontSize: 20, color: "#D10068", marginRight: "10px" }}
-            />
-            <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FontAwesomeIcon
+                icon={faUser}
+                style={{ fontSize: 14, color: "#D10068", marginRight: "10px" }}
+              />
+              <PostAuthorName>{authorName}</PostAuthorName>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FontAwesomeIcon
+                icon={faCalendar}
+                style={{ fontSize: 14, color: "#D10068", marginRight: "10px" }}
+              />
+              <PostDate>{moment(date).format('DD MMM, YYYY')}</PostDate>
+            </div>
           </div>
           {tags == null ? null : (
             <PostTags>
               <FontAwesomeIcon
                 icon={faTags}
-                style={{ fontSize: 18, color: "#D10068", marginRight: "10px" }}
+                style={{ fontSize: 14, color: "#D10068", marginRight: "10px" }}
               />
               {tags.map((tag, index) => (
                 <Link

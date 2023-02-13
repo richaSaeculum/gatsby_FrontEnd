@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-export const TagPostsWrapper = styled.div`
+export const UserWrapper = styled.div`
   margin: 0 auto;
   padding-top: 120px;
   position: relative;
@@ -36,8 +36,7 @@ export const TagPostsWrapper = styled.div`
     }
   }
 `;
-
-export const TagPageHeading = styled.div`
+export const UserAboutWrapper = styled.div`
   padding-left: 210px;
   font-size: 15px;
   font-weight: 400;
